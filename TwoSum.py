@@ -1,3 +1,4 @@
+# two sum (easy)
 def twoSum(nums, target):
     if len(nums) == 2 and sum(nums) == target:
         return [0, 1]
