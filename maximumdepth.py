@@ -46,3 +46,25 @@ class Solution(object):
             level += 1
 
         return level
+
+
+# Iterative DFS using a stack
+
+
+class Solution(object):
+    def maxDepth(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        level = 1
+        stack = [[root, 1]]
+
+        while stack:
+            node, depth = stack.pop()
+            if node:
+                level = max(level, depth)
+                stack.append([node.left, level + 1])
+                stack.append([node.right, level + 1])
+
+        return level
