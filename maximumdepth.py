@@ -57,6 +57,8 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        if not root:
+            return 0
         level = 1
         stack = [[root, 1]]
 
