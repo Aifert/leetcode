@@ -1,5 +1,9 @@
 # pascals triangle (easy)
 
+# basic idea is referring to the last array that we have added into our result
+# adding a 0 to the front adn the back so we can do the add left adn right for
+# first and last element of the list
+
 
 def generate(numRows):
     result = [[1]]
