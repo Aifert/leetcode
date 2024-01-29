@@ -7,14 +7,21 @@ def maxProfit(prices):
     profit = 0
     loop = True
 
-    while len(prices) != 1 or loop:
-        if prices.index(max_num) > prices.index(min_num):
-            profit = max_num - min_num
+    while loop:
+        if len(prices) != 1:
+            if prices.index(min_num) == len(prices) - 1:
+                prices.remove(min_num)
+                min_num = min(prices)
+            elif prices.index(max_num) > prices.index(min_num):
+                profit = max_num - min_num
+                loop = False
+            else:
+                prices.remove(max_num)
+                max_num = max(prices)
+        else:
             loop = False
-        prices.remove(max_num)
-        max_num = max(prices)
 
     return profit
 
 
-print(maxProfit([7, 1, 5, 3, 6, 4]))
+print(maxProfit([3, 2, 6, 5, 0, 3]))
