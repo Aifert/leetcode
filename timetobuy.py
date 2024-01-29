@@ -1,27 +1,35 @@
 # best time to buy stock (Easy)
 
+# this solution is too slow
+
+# def maxProfit(prices):
+#     max_gap = 0
+#     for i in range(len(prices)):
+#         temp = prices[i:]
+#         if (max(temp) - prices[i]) >= max_gap:
+#             max_gap = max(temp) - prices[i]
+
+#     return max_gap
+
+
+# Leetcode soltion
+
+# main idea is using two pointers left and right and checking if the right is greater than left
+# if it is then check if it is greater profit than currently is
+
 
 def maxProfit(prices):
-    max_num = max(prices)
-    min_num = min(prices)
-    profit = 0
-    loop = True
-
-    while loop:
-        if len(prices) != 1:
-            if prices.index(min_num) == len(prices) - 1:
-                prices.remove(min_num)
-                min_num = min(prices)
-            elif prices.index(max_num) > prices.index(min_num):
-                profit = max_num - min_num
-                loop = False
-            else:
-                prices.remove(max_num)
-                max_num = max(prices)
+    left, right = 0, 1
+    max_gap = 0
+    while right < len(prices):
+        if prices[left] < prices[right]:
+            profit = prices[right] - prices[left]
+            max_gap = max(max_gap, profit)
         else:
-            loop = False
+            left = right
+        right += 1
 
-    return profit
+    return max_gap
 
 
-print(maxProfit([3, 2, 6, 5, 0, 3]))
+print(maxProfit([7, 1, 5, 3, 6, 4]))
